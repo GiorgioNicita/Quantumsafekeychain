@@ -86,16 +86,12 @@ fn dilithium_key(rl: &mut Editor<()>) {
         }
     };
 
-    // Initialize the Dilithium algorithm
     let sig = Sig::new(algorithm).expect("Failed to initialize Dilithium algorithm");
 
-    // Generate the keypair
     let (public_key, secret_key) = sig.keypair().expect("Failed to generate keypair");
 
-    // Get current date in DDMMYYYY format
     let current_date = Local::now().format("%d%m%Y").to_string();
 
-    // Ask the user for the folder where they want to save the keys
     println!("Enter the folder path where you want to save the keys:");
 
     let readline = rl.readline(">> ");
@@ -115,20 +111,16 @@ fn dilithium_key(rl: &mut Editor<()>) {
     };
 
     if !Path::new(&folder_path).exists() {
-        // If the folder doesn't exist, create it
         create_dir_all(&folder_path).expect("Failed to create folder");
     }
 
-    // Construct the file paths for saving the binary keys with date and meaningful names
     let public_key_path = format!("{}/{}_public_key_{}.bin", folder_path, name, current_date);
     let secret_key_path = format!("{}/{}_secret_key_{}.bin", folder_path, name, current_date);
 
-    // Convert public_key to bytes and save it as a raw binary file
     let public_key_bytes = public_key.as_ref();
     let mut file = File::create(&public_key_path).expect("Failed to create public key file");
     file.write_all(public_key_bytes).expect("Failed to write public key");
 
-    // Convert secret_key to bytes and save it as a raw binary file
     let secret_key_bytes = secret_key.as_ref();
     let mut file = File::create(&secret_key_path).expect("Failed to create secret key file");
     file.write_all(secret_key_bytes).expect("Failed to write secret key");
@@ -166,16 +158,12 @@ fn falcon_key(rl: &mut Editor<()>) {
         }
     };
 
-    // Initialize the Dilithium algorithm
     let sig = Sig::new(algorithm).expect("Failed to initialize Dilithium algorithm");
 
-    // Generate the keypair
     let (public_key, secret_key) = sig.keypair().expect("Failed to generate keypair");
 
-    // Get current date in DDMMYYYY format
     let current_date = Local::now().format("%d%m%Y").to_string();
 
-    // Ask the user for the folder where they want to save the keys
     println!("Enter the folder path where you want to save the keys:");
 
     let readline = rl.readline(">> ");
@@ -195,20 +183,16 @@ fn falcon_key(rl: &mut Editor<()>) {
     };
 
     if !Path::new(&folder_path).exists() {
-        // If the folder doesn't exist, create it
         create_dir_all(&folder_path).expect("Failed to create folder");
     }
 
-    // Construct the file paths for saving the binary keys with date and meaningful names
     let public_key_path = format!("{}/{}_public_key_{}.bin", folder_path, name, current_date);
     let secret_key_path = format!("{}/{}_secret_key_{}.bin", folder_path, name, current_date);
 
-    // Convert public_key to bytes and save it as a raw binary file
     let public_key_bytes = public_key.as_ref();
     let mut file = File::create(&public_key_path).expect("Failed to create public key file");
     file.write_all(public_key_bytes).expect("Failed to write public key");
 
-    // Convert secret_key to bytes and save it as a raw binary file
     let secret_key_bytes = secret_key.as_ref();
     let mut file = File::create(&secret_key_path).expect("Failed to create secret key file");
     file.write_all(secret_key_bytes).expect("Failed to write secret key");

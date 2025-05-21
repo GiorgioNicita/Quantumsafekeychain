@@ -27,7 +27,7 @@ fn main() {
                 rl.add_history_entry(line.as_str());
                 match line.trim() {
                     "1" => keygen::generate_key(),
-                    //"2" => encrypt::encrypt_file(),
+                   // "2" => encrypt::encrypt_file(),
                     //"3" => decrypt::decrypt_file(),
                     //"4" => sign::sign_file(),
                     //"5" => verify::verify_file(),
